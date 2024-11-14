@@ -24,8 +24,9 @@ const pool = mysql.createPool({
   password: process.env.MYSQLPASSWORD,
   database: process.env.MYSQLDATABASE,
   waitForConnections: true,
-  connectionLimit: 10,
+  connectionLimit: 15,
   queueLimit: 0,
+  connectTimeout: 20000,
 });
 
 // Initialize Express application
