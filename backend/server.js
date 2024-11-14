@@ -6,7 +6,6 @@ import dotenv from "dotenv";
 import mysql from "mysql2/promise";
 
 // Import rute API
-import login from "./api/login.js";
 import changepass from "./api/changepassword.js";
 import quizprogress from "./api/quizprogress.js";
 import resetquiz from "./api/resetquiz.js";
