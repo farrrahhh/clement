@@ -5,6 +5,8 @@ document.getElementById("signupForm").addEventListener("submit", async function 
   const password = document.getElementById("password").value;
   const confirmPassword = document.getElementById("confirmPassword").value;
 
+  console.log("Form submitted with values:", { username, password, confirmPassword }); // Debugging form data
+
   // Check if passwords match
   if (password !== confirmPassword) {
     const errorMessage = document.getElementById("errorMessage");
@@ -21,6 +23,7 @@ document.getElementById("signupForm").addEventListener("submit", async function 
   }
 
   try {
+    console.log("Sending request to server...");
     const response = await fetch("https://clement-website-ruangbahasa123.vercel.app/signup", {
       method: "POST",
       headers: {
@@ -29,7 +32,12 @@ document.getElementById("signupForm").addEventListener("submit", async function 
       body: JSON.stringify({ username, password }),
     });
 
+    console.log("Response status:", response.status); // Log response status
+
     if (response.ok) {
+      const data = await response.json(); // Parse response data
+      console.log("Response data:", data);
+
       // Display success message
       const successMessage = document.getElementById("successMessage");
       successMessage.textContent = "Signup successful! Redirecting to login...";
@@ -53,6 +61,6 @@ document.getElementById("signupForm").addEventListener("submit", async function 
       }, 3000);
     }
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error in fetch request:", error); // Log fetch error
   }
 });
