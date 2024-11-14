@@ -58,11 +58,11 @@ app.get("/", (req, res) => {
   }
 })();
 
-// Utility function for querying the database with promises
 const queryDb = async (query, params) => {
   try {
     // Check if query is a valid string
     if (typeof query !== "string" || query.trim() === "") {
+      console.error("Invalid query string:", query); // Log invalid query
       throw new Error("Query must be a non-empty string.");
     }
 
@@ -71,8 +71,8 @@ const queryDb = async (query, params) => {
       params = [params];
     }
 
-    console.log("Executing query:", query);
-    console.log("With parameters:", params);
+    console.log("Executing query:", query); // Log query
+    console.log("With parameters:", params); // Log parameters
 
     const [rows] = await pool.execute(query, params);
     return rows;
@@ -81,7 +81,6 @@ const queryDb = async (query, params) => {
     throw error; // Re-throw the error for further handling
   }
 };
-
 export default queryDb;
 
 // API Routes
