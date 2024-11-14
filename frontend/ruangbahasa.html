@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>RuangBahasa</title>
+</head>
+<body>
+    <header>
+        <a href="/index.html" class="logo">RuangBahasa!</a>
+        <div class="hamburger" onclick="toggleNav()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <div class="hamburger" onclick="toggleNav()">
+                <i class="fas fa-times"></i>
+            </div>
+            <a href="/index.html">Home</a>
+            <a href="#" class="active">Tentang</a>
+            <a href="about.html">Developer</a>
+            <a href="login.html" id="login-link">Login</a>
+            <a href="profile.html" id="profile-icon" style="display: none;">
+                <i class="fas fa-user"></i>
+            </a>
+        </nav>
+    </header>
+    <section class="home">
+        <div class="about-content">
+            <h2>Apa itu RuangBahasa?</h2>
+            <p>RuangBahasa adalah platform pembelajaran bahasa Indonesia yang interaktif dan menyenangkan. Tujuan saya membuat RuangBahasa ini adalah untuk membantu mahasiswa TPB, terutama dalam mata pelajaran TTKI, sehingga dapat membantu dalam mempelajari beberapa topik.</p>
+            <p>Dengan RuangBahasa, saya berharap mahasiswa TPB bisa memahami dengan baik penggunaan bahasa Indonesia.</p>
+            <p>Fitur-fitur utama RuangBahasa meliputi:</p>
+            <ul>
+                <li>Materi pembelajaran yang komprehensif dan mudah dipahami.</li>
+                <li>Kuis yang dapat membantu mengasah pemahaman mahasiswa.</li>
+                <li>Dan masih banyak lagi.</li>
+            </ul>
+            <p>RuangBahasa dirancang masih dalam tahap prototipe. Segala saran dan masukan sangat membantu saya dalam mengembangkan website ini!</p>
+        </div>
+    </section>
+    
+    <script src="hamburger.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

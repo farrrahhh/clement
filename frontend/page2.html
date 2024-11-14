@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Kuis RuangBahasa</title>
+</head>
+<body>
+    <header>
+        <a href="/index.html" class="logo">RuangBahasa!</a>
+        <div class="hamburger" onclick="toggleNav()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <div class="hamburger" onclick="toggleNav()">
+                <i class="fas fa-times"></i>
+            </div>
+            <a href="/index.html">Home</a>
+            <a href="#" class="active">Kuis</a>
+            <a href="material.html">Materi</a>
+            <a href="ruangbahasa.html">Tentang</a>
+            <a href="about.html">Developer</a>
+            <a href="profile.html" id="profile-icon" style="display: none;">
+                <i class="fas fa-user"></i>
+            </a>
+
+        </nav>
+    </header>
+    <section class="home2">
+        <div class="page2-content">
+            <h1>Mau kuis materi apa nih?</h1>
+            <div class="course">
+                <a href="begineer-progress.html" class="course1">
+                    <h2>Kata baku / tidak baku</h2>
+                    <p>Kuis santai seputar kata baku dan tidak baku</p>
+                </a>
+                <a href="intermediate-progress.html" class="course2">
+                    <h2>Ejaan</h2>
+                    <p>Huruf kapital, huruf miring, tanda baca, salah satu topik yang cukup nyebelin :D</p>
+                </a>
+                <a href="advanced-progress.html" class="course3">
+                    <h2>Penulisan Kata</h2>
+                    <p>Bentukan kata, kata serapan, cukup susah sih ini!</p>
+                </a>
+        </div>
+    <script src="hamburger.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        function setQuizId(quizId) {
+            localStorage.setItem('quiz_id', quizId);
+        }
+    </script>
+    </section>
+</body>
+</html>

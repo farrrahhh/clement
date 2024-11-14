@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Materials</title>
+</head>
+<body>
+    <header>
+        <a href="/index.html" class="logo">RuangBahasa!</a>
+        <div class="hamburger" onclick="toggleNav()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <div class="hamburger" onclick="toggleNav()">
+                <i class="fas fa-times"></i>
+            </div>
+            <a href="/index.html">Home</a>
+            <a href="page2.html">Kuis</a>
+            <a href="#" class="active">Materi</a>
+            <a href="ruangbahasa.html">Tentang</a>
+            <a href="about.html">Developer</a>
+            <a href="profile.html" id="profile-icon" style="display: none;">
+                <i class="fas fa-user"></i>
+            </a>
+
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="box">
+            <h3>Kalimat Baku dan Tak Baku</h3>
+            <select id="material1" onchange="loadMaterial('material1')">
+                <option value="">Pilih topik</option>
+                <option value="material1-1">Kata baku</option>
+                <option value="material1-2">Kata tak baku</option>
+
+            </select>
+            <div id="content1" class="content"></div>
+        </div>
+        <div class="box">
+            <h3>Ejaan</h3>
+            <select id="material2" onchange="loadMaterial('material2')">
+                <option value="">Pilih topik</option>
+                <option value="material2-1">Pengantar Ejaan</option>
+            </select>
+            <div id="content2" class="content"></div>
+        </div>
+        <div class="box">
+            <h3>Penulisan Kata</h3>
+            <select id="material3" onchange="loadMaterial('material3')">
+                <option value="">Pilih topik</option>
+                <option value="material3-1">Apa itu penulisan kata?</option>
+            </select>
+            <div id="content3" class="content"></div>
+        </div>
+    </div>
+
+    <script src="materials.js"></script>
+    <script src="hamburger.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

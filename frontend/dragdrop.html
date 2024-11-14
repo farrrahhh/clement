@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>RuangBahasa</title>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">RuangBahasa!</a>
+        <div class="hamburger" onclick="toggleNav()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <div class="hamburger" onclick="toggleNav()">
+                <i class="fas fa-times"></i>
+            </div>
+            <a href="#" class="active">Home</a>
+            <a href="ruangbahasa.html">Tentang</a>
+            <a href="about.html">Developer</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+    <section class="dragdrop">
+        <p>Sebelum mulai, drag maskotnya ke kotak dulu yuk!</p>
+        <div class="dragdrop-container">
+            <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="dragdrop-img">
+                <img src="maskot.png" id="drag1" draggable="true" ondragstart="drag(event)" width="336" height="69">
+            </div>
+        </div>
+        <div class="button-container2">
+            <a href="login.html" class="btn2">Kuyy login!</a>
+            <p class="error-message" style="display: none;">Drag dulu yah gambarnya!</p>
+        </div>
+    </section>
+    <script src="dragdrop.js"></script>
+    <script src="hamburger.js"></script>
+</body>
+</html>

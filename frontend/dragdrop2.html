@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Drag and Drop Quiz</title>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">RuangBahasa!</a>
+        <div class="hamburger" onclick="toggleNav()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <div class="hamburger" onclick="toggleNav()">
+                <i class="fas fa-times"></i>
+            </div>
+            <a href="index.html">Home</a>
+            <a href="page2.html" class="active">Course</a>
+            <a href="about.html">Tentang</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <h3>Navigation Panel</h3>
+            <div class="nav-item" id="nav-1" onclick="navigateToQuestion(0)">1</div>
+            <div class="nav-item" id="nav-2" onclick="navigateToQuestion(1)">2</div>
+            <div class="nav-item" id="nav-3" onclick="navigateToQuestion(2)">3</div>
+        </div>
+        <div class="quiz-container">
+            <h2>Drag and Drop Quiz</h2>
+            <form id="quizForm">
+                <div class="question-container" id="question-1">
+                    <p>Question 1: I want <span class="dropzone" data-answer="a"></span> bicycle.</p>
+                    <div class="options-container" id="options-1">
+                        <div class="option" draggable="true" data-value="a">a</div>
+                        <div class="option" draggable="true" data-value="an">an</div>
+                        <div class="option" draggable="true" data-value="the">the</div>
+                    </div>
+                </div>
+                <div class="question-container" id="question-2" style="display: none;">
+                    <p>Question 2: She has <span class="dropzone" data-answer="an"></span> apple.</p>
+                    <div class="options-container" id="options-2">
+                        <div class="option" draggable="true" data-value="a">a</div>
+                        <div class="option" draggable="true" data-value="an">an</div>
+                        <div class="option" draggable="true" data-value="the">the</div>
+                    </div>
+                </div>
+                <div class="question-container" id="question-3" style="display: none;">
+                    <p>Question 3: He is <span class="dropzone" data-answer="the"></span> best player.</p>
+                    <div class="options-container" id="options-3">
+                        <div class="option" draggable="true" data-value="a">a</div>
+                        <div class="option" draggable="true" data-value="an">an</div>
+                        <div class="option" draggable="true" data-value="the">the</div>
+                    </div>
+                </div>
+                <div class="button-container"></div>
+                    <button id="prev-btn" class="btn3" type="button" style="display: none;" onclick="navigateToPreviousQuestion()">Previous</button>
+                    <button id="next-btn" class="btn3" type="button" onclick="navigateToNextQuestion()">Next</button>
+                    <button id="submit-btn" type="submit" style="display:none;">Submit</button>
+                    <button id="finish-btn" type="button" style="display:none;">Finish</button>
+                
+            </form>
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script src="test2.js"></script>
+    <script src="hamburger.js"></script>
+</body>
+</html>

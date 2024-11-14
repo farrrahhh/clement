@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Signup - RuangBahasa</title>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">RuangBahasa!</a>
+        <div class="hamburger" onclick="toggleNav()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <div class="hamburger" onclick="toggleNav()">
+                <i class="fas fa-times"></i>
+            </div>
+            <a href="index.html">Home</a>
+            <a href="about.html">Tentang</a>
+            <a href="about.html">Developer</a>
+            <a href="#" class="active">Login</a>
+        </nav>
+    </header>
+    <div class="login-container">
+        <h2>Daftar Akun Baru</h2>
+        <form id="signupForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <label for="password-check">Check Password:</label>
+            <input type="password" id="confirmPassword" name="password" required>
+            <input type="submit" value="Signup">
+        </form>
+        <br>
+        <p>Sudah punya akun? <a href="login.html">Login di sini</a></p>
+        <div id="successMessage" class="message">Signup berhasil, kembali ke halaman login....</div>
+        <div id="errorMessage" class="signup_error">Username sudah terdaftar.</div>
+    </div>
+
+    <script src="signup.js"></script>
+    <script src="hamburger.js"></script>
+</body>
+</html>

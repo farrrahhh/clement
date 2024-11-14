@@ -1,0 +1,1034 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+#div1 {
+    width: 22.5vw;
+    height: 29.5vw;
+    padding: 10px;
+    border: 2px solid #082387;
+    align-items: center;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: lightblue;
+    color: black;
+}
+
+header {
+    margin-top: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 9%;
+    background-color: transparent;
+    filter: drop-shadow(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 600;
+    color: black;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+}
+
+nav a {
+    font-size: 1.8rem;
+    color: white;
+    margin-left: 2rem;
+    transition: 0.5s ease;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+}
+
+nav a:hover,
+nav a.active {
+    color: black;
+    border-bottom: 3px solid black;
+}
+
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+@media(max-width: 900px) {
+    .hamburger {
+        display: block;
+    }
+    nav {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 70%;
+        height: 100%;
+        background-color: white; /* Changed background color to white */
+        padding-top: 3rem;
+        transition: left 0.3s ease;
+    }
+    nav.active {
+        left: 0;
+    }
+    nav a {
+        color: black; /* Changed text color to black for better contrast */
+        font-size: 1.5rem;
+        margin: 1rem 0;
+        text-align: center;
+    }
+    nav .hamburger {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        color: black; /* Changed icon color to black for better contrast */
+    }
+}
+
+section {
+    min-height: 100vh;
+    padding: 5rem 9% 5rem;
+}
+
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    background-color: lightblue;
+}
+
+.home .home-content1 h1 {
+    font-size: 5rem;
+    color: #082387;
+    font-weight: 600;
+}
+
+.home .home-content1 span {
+    color: #ff5a4e;
+}
+
+.home-content1 h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.home-content1 p {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.home-img {
+    border-radius: 100%;
+}
+
+.home-img img {
+    position: relative;
+    width: 21vw;
+    height: 28vw;
+    box-shadow: 0 0 25px solid #082387;
+    cursor: pointer;
+    transition: 0.2s linear;
+    border: 0.6rem solid #082387;
+}
+
+.home-img img:hover {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+/* General styles for the home section */
+
+
+/* Styles for the about-content div */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the heading */
+.about-content h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Styles for the paragraphs */
+.about-content p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Styles for the unordered list */
+.about-content ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: black;
+    line-height: 1.6;
+}
+
+/* Styles for the list items */
+.about-content ul li {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: black;
+}
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background-color: transparent;
+    border: 0.2rem solid black;
+    font-size: 2rem;
+    border-radius: 50%;
+    margin: 1.5rem 1.5rem 1.5rem 0;
+    transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: black;
+    color: white;
+    transform: scale(1.3) translateY(-5px);
+    box-shadow: 0 0 25px;
+}
+
+.btn1 {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    font-weight: 500;
+    color: white;
+    background-color: black;
+    border-radius: 4rem;
+    margin-top: 2rem;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.btn1:hover {
+    background-color: #082387;
+    color: white;
+    transform: scale(1.1);
+}
+
+.typing-text {
+    font-size: 20px;
+    font-weight: 600;
+    min-width: 280px;
+    color: #082387;
+}
+
+.typing-text span {
+    position: relative;
+}
+
+.typing-text span::before {
+    content: "Software Developer";
+    color: black;
+    animation: words 20s infinite;
+}
+
+.typing-text span::after {
+    content: "";
+    position: absolute;
+    width: calc(100% + 8px);
+    height: 100%;
+    background-color: lightblue;
+    border-left: 3px solid lightblue;
+    right: -8;
+    animation: cursor 0.6s infinite;
+}
+
+.typing-text1 {
+    font-size: 50px;
+    font-weight: 600;
+    min-width: 280px;
+    color: #082387;
+}
+
+.typing-text1 span {
+    position: relative; /* Set the color of the text to #082387 */
+}
+
+.typing-text1 span::before {
+    content: "Interaktif!";
+    color: black; 
+    animation: words2 20s infinite;
+}
+
+.typing-text1 span::after {
+    content: "";
+    position: absolute;
+    width: calc(100% + 8px);
+    height: 100%;
+    background-color: lightblue;
+    border-left: 3px solid lightblue;
+    right: -8;
+    animation: cursor 0.6s infinite;
+}
+
+@keyframes cursor {
+    to {
+        border-left: 3px solid #082387;
+    }
+}
+
+@keyframes words {
+    0%, 20% {
+        content: "Web Developer";
+    }
+    21%, 40% {
+        content: "UI/UX Designer";
+    }
+    41%, 60% {
+        content: "Learner";
+    }
+    61%, 80% {
+        content: "Photographer";
+    }
+    81%, 100% {
+        content: "Freelancer";
+    }
+}
+
+@keyframes words2 {
+    0%, 20% {
+        content: "Mudah dipahami!"
+    }
+    21%, 40% {
+        content: "Menarik!"
+    }
+    41%, 60% {
+        content: "Berguna!"
+    }
+    61%, 80% {
+        content: "Menghibur!"
+    }
+    81%, 100% {
+        content: "Interaktif!"
+    }
+}
+
+@media(max-width: 1000px) {
+    .home {
+        gap: 4rem;
+    }
+}
+
+@media(max-width: 995px) {
+    .home {
+        flex-direction: column;
+        margin: 5rem 4rem;
+    }
+
+    .home.home-content h3 {
+        font-size: 2.5rem;
+    }
+
+    .home-content h1 {
+        font-size: 5rem;
+    }
+}
+
+.dragdrop {
+    text-align: center;
+    margin: 20px;
+}
+
+.dragdrop p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.dragdrop-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Adjust gap as needed */
+}
+
+.dragdrop-img {
+    text-align: center;
+}
+
+.dragdrop-img img {
+    position: relative;
+    width: 21vw;
+    height: 28vw;
+    box-shadow: 0 0 25px solid #082387;
+    cursor: pointer;
+    transition: 0.2s linear;
+    border: 0.6rem solid #082387;
+}
+
+.dragdrop-img img:hover {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn2 {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    font-weight: 500;
+    color: white;
+    background-color: black;
+    border-radius: 4rem;
+    margin-top: 2rem;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.btn2:hover {
+    background-color: #082387;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* .btn2.disabled {
+    cursor: not-allowed;
+    background-color: grey; /* Optional: Change the background color to indicate disabled state 
+} */
+
+/* .btn2:hover:not(.disabled) {
+    background-color: #082387;
+    color: white;
+    transform: scale(1.1);
+} */
+.error-message {
+    display: none;
+    color: red;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    padding: 1rem;
+    border: 1px solid red;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.error-message.show {
+    transform: translateX(-50%) translateY(-20px);
+    opacity: 1;
+}
+
+@media(max-width: 900px) {
+    html {
+        font-size: 50%;
+    }
+
+    header {
+        padding: 1rem 5%;
+    }
+
+    nav {
+        width: 100%;
+        padding: 1rem;
+        border: none;
+        background-color: white; /* Changed background color to white */
+    }
+
+    nav a {
+        font-size: 1.6rem;
+        margin: 1rem 0;
+        color: black; /* Changed text color to black for better contrast */
+    }
+
+    .home {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .home .home-content1 h1 {
+        font-size: 4rem;
+    }
+
+    .home-content1 h3 {
+        font-size: 3rem;
+    }
+
+    .home-content1 p {
+        font-size: 1.6rem;
+    }
+
+    .home-img img {
+        width: 50vw;
+        height: auto;
+    }
+
+    .btn {
+        font-size: 1.6rem;
+        padding: 0.8rem 1.6rem;
+    }
+
+    .social-icons a {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.6rem;
+    }
+}
+
+.home2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+    background-color: lightblue;
+}
+
+.home2 .page2-content h1 {
+    font-size: 6rem;
+    color: black;
+    font-weight: 600;
+}
+
+span {
+    color: #082387;
+}
+
+.page2-content h3 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.page2-content h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    padding: 1rem;
+    border: 2px solid #082387;
+    border-radius: 2rem;
+    background-color: #0cc0df;
+    color: white;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.page2-content p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.login-container {
+    background-color: lightblue;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 100px; /* Adjust this value as needed to position below the navigation bar */
+    border: 2px solid #082387; /* Added border */
+}
+
+.login-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.login-container p {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-container input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-container input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.error-message {
+    color: red;
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.loginForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    font-size: 20px;
+}
+
+.login-container label {
+    font-size: 1.5rem; /* Increased font size for labels */
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100px; /* Adjust this value as needed to position below the navigation bar */
+    margin-top: 50px; /* Adjust this value as needed to position below the navigation bar */
+}
+
+.sidebar {
+    width: 20%;
+    background-color: lightblue;
+    padding: 1rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 150px; /* Adjust this value as needed to position below the navigation bar */
+    left: 0; /* Position the sidebar to the left of the screen */
+    height: auto; /* Adjust this value to fit the content */
+    overflow-y: auto;
+    border: 2px solid #082387;
+}
+
+.nav-item {
+    width: 40px;
+    height: 40px;
+    margin: 0.5rem;
+    text-align: center;
+    line-height: 40px;
+    background-color: white; /* Default color for unanswered question */
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    border: 2px solid black; /* Black border */ /* Adjust this value as needed to position below the navigation bar */
+}
+
+.nav-item.answered {
+    background-color: grey; /* Color for answered question */
+}
+
+.nav-item.current {
+    border: 2px solid blue; /* Border color for current question */
+}
+
+.nav-item.wrong {
+    background-color: red;
+}
+
+.nav-item.true {
+    background-color: green;
+}
+
+.content {
+    width: 80%;
+    padding: 2rem;
+    margin-left: 20%; /* Adjust this value to match the sidebar width */
+}
+
+#question-container {
+    margin-bottom: 10px;
+    padding: 2rem; /* Increased padding for a bigger box */
+    border: 2px solid #082387;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 1.5rem; /* Increased font size */
+    position: relative;
+    overflow: hidden; /* Prevent scrolling within the container */
+}
+
+body {
+    overflow: hidden; /* Prevent scrolling on the entire page */
+}
+
+.answer-container {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.btn3 {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    background-color: black;
+    border-radius: 4rem;
+    margin: 1rem;
+    transition: 0.3s ease;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.btn3:hover {
+    background-color: #082387;
+    color: white;
+    transform: scale(1.1);
+}
+
+.answered {
+    background-color: grey;
+    color: white;
+}
+
+.result-box {
+    font-size: 16px; /* You can change the font size here */
+    color: #082387; /* You can change the font color here */
+    background-color: #f9f9f9; /* You can change the background color here */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.bottom-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.course p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-top: 100px; /* Adjust this value as needed to position below the navigation bar */
+    gap: 20px; /* Add gap between the boxes */
+}
+
+.box {
+    width: 80%;
+    padding: 20px;
+    border: 2px solid #082387;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    position: relative;
+}
+
+.message {
+    display: none;
+    color: green;
+    margin-top: 12px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.signup_error {
+    display: none;
+    color: red;
+    margin-top: 12px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.message.show {
+    display: block;
+}
+
+.quiz-container {
+    width: 80%;
+    padding: 20px;
+    border: 2px solid #082387;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    position: relative;
+}
+
+.quiz-container {
+    width: 80%;
+    padding: 20px;
+    border: 2px solid #082387;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    position: relative;
+}
+
+.quiz-container h2 {
+    text-align: center;
+}
+
+.question-container {
+    margin-bottom: 20px;
+}
+
+.options-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.option {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.option.dragging {
+    opacity: 0.5;
+}
+
+.dropzone {
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    border: 2px dashed #ccc;
+    margin: 0 5px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.dropzone.correct {
+    border: 2px solid green;
+    background-color: lightgreen;
+}
+
+/* Existing styles */
+.dropzone.incorrect {
+    border: 2px solid red;
+    background-color: lightcoral;
+}
+
+/* Ensure the about section is visible */
+.about {
+    display: block;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Ensure the about section is visible */
+
+.profile h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: black;
+    padding: 1rem;
+    margin-top: 5rem;
+}
+
+.logout-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1,5rem;
+    font-weight: 500;
+    color: white;
+    background-color: black;
+    border-radius: 4rem;
+    margin: 1rem;
+    transition: 0.3s ease;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.logout-btn:hover {
+    background-color: #082387;
+    color: white;
+    transform: scale(1.1);
+}
+
+.change-pass {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1,5rem;
+    font-weight: 500;
+    color: white;
+    background-color: black;
+    border-radius: 4rem;
+    margin: 1rem;
+    transition: 0.3s ease;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.change-pass:hover {
+    background-color: #082387;
+    color: white;
+    transform: scale(1.1);
+}
+
+.change-password {
+    background-color: lightblue;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 100px; /* Adjust this value as needed to position below the navigation bar */
+    border: 2px solid #082387; /* Added border */
+    margin-bottom: 1rem;
+}
+
+.change-password label {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.change-password input[type="text"],
+.change-password input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.change-password input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.change-password input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
+.changePasswordForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    font-size: 20px;
+}
+
+.change-password h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.quiz-progress h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    margin-top:10rem;
+    margin-left: 15rem;
+}
+
+.quiz-progress #progress-status {
+    font-size: 1.5em;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    margin-left: 15rem;
+}
+
+.quiz-progress #score {
+    font-size: 1.5em;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    margin-left: 15rem;
+}
+
+.quiz-progress button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1,5rem;
+    font-weight: 500;
+    color: white;
+    background-color: black;
+    border-radius: 4rem;
+    margin: 1rem;
+    transition: 0.3s ease;
+    cursor: pointer;
+    margin-left: 140px;
+    margin-top: 50px;
+}
+
+.quiz-progress button:hover {
+    background-color: #082387;
+    color: white;
+    transform: scale(1.1);
+}

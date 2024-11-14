@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Quiz Kata Baku / Tak Baku</title>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">RuangBahasa!</a>
+        <div class="hamburger" onclick="toggleNav()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <div class="hamburger" onclick="toggleNav()">
+                <i class="fas fa-times"></i>
+            </div>
+            <a href="index.html">Home</a>
+            <a href="page2.html" class="active">Kuis</a>
+            <a href="material.html">Materi</a>
+            <a href="ruangbahasa.html">Tentang</a>
+            <a href="about.html">Developer</a>
+            <a href="profile.html" id="profile-icon">
+                <i class="fas fa-user"></i>
+            </a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <h3>Navigation Panel</h3>
+            <div class="nav-item" id="nav-1" onclick="navigateToQuestion(0)">1</div>
+            <div class="nav-item" id="nav-2" onclick="navigateToQuestion(1)">2</div>
+            <div class="nav-item" id="nav-3" onclick="navigateToQuestion(2)">3</div>
+            <div class="nav-item" id="nav-4" onclick="navigateToQuestion(3)">4</div>
+            <div class="nav-item" id="nav-5" onclick="navigateToQuestion(4)">5</div>
+            <div class="nav-item" id="nav-6" onclick="navigateToQuestion(5)">6</div>
+            <div class="nav-item" id="nav-7" onclick="navigateToQuestion(6)">7</div>
+            <div class="nav-item" id="nav-8" onclick="navigateToQuestion(7)">8</div>
+            <div class="nav-item" id="nav-9" onclick="navigateToQuestion(8)">9</div>
+            <div class="nav-item" id="nav-10" onclick="navigateToQuestion(9)">10</div>
+        </div>
+        <div class="content">
+            <form id="quizForm">
+                <div id="question-container">
+                    <p id="question">Nomor 1: Pilihlah kata yang baku!</p>
+                    <div id="options">
+                        <!-- Options will be dynamically generated here -->
+                    </div>
+                    <div class="bottom-container">
+                        <div class="button-container">
+                            <button id="prev-btn" class="btn3" type="button" style="display: none;">Previous</button>
+                            <button id="next-btn" class="btn3" type="button">Next</button>
+                            <button id="submit-btn" class="btn3" type="submit" style="display: none;">Submit</button>
+                            <button id="finish-btn" class="btn3" style="display:none;">Finish</button>
+                        </div>
+                        <div id="result" class="result-box"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="begineer.js"></script>
+    <script src="auth.js"></script>
+    <script src="hamburger.js"></script>
+</body>
+</html>
