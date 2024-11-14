@@ -58,10 +58,15 @@ app.get("/", (req, res) => {
   }
 })();
 
-const queryDb = (query, params) => {
-  return pool.promise().query(query, params);
+const queryDb = async (query, params) => {
+  const connection = await pool.getConnection();
+  try {
+    const [rows, fields] = await connection.query(query, params);
+    return rows;
+  } finally {
+    connection.release(); // Make sure to release the connection
+  }
 };
-export default queryDb;
 
 // API Routes
 app.use("/signup", signup);
@@ -71,7 +76,5 @@ app.use("/change-password", changepass); // Route for password change
 app.use("/quiz-progress", quizprogress); // Route for quiz progress
 app.use("/reset-quiz", resetquiz); // Route for resetting quiz
 
-// Start the server
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
-});
+// Export the app for Vercel
+export default app;
