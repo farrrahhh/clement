@@ -32,14 +32,7 @@ export const pool = mysql.createPool({
 // Initialize Express application
 const app = express();
 
-// Middleware setup
-const corsOptions = {
-  origin: ["https://clement-website-ruangbahasa123.vercel.app"], // Allowed origins
-  methods: "GET,POST,PUT,DELETE",
-  allowedHeaders: "Content-Type,Authorization",
-  optionsSuccessStatus: 200,
-};
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json());
 
 // Simple root route
