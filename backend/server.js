@@ -2,14 +2,8 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import bcrypt from "bcryptjs";
-import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
-import mysql2 from "mysql2";
 import mysql from "mysql2/promise";
-
-
-
 
 // Import rute API
 import login from "./api/login.js";
@@ -19,12 +13,9 @@ import resetquiz from "./api/resetquiz.js";
 import saveprogress from "./api/saveprogress.js";
 import signup from "./api/signup.js";
 
-
-
 // Check database connection
 
 dotenv.config();
-
 
 // const db = await mysql.createConnection({
 //   host: process.env.MYSQLHOST,
@@ -42,17 +33,15 @@ const pool = mysql.createPool({
   database: process.env.MYSQLDATABASE,
   waitForConnections: true,
   connectionLimit: 10,
-  queueLimit: 0
+  queueLimit: 0,
 });
-
 
 // export default db;
 
 const app = express();
 
-
 // try {
-  
+
 //   // Test connection with a simple query
 //   const [rows] = await db.query('SELECT 1');
 //   console.log('Connection successful');
@@ -60,24 +49,18 @@ const app = express();
 //   console.error('Unable to connect to the database:', error);
 // }
 
-
-
-
-
 const corsOptions = {
-    origin: ['http://127.0.0.1:5500', 'http://localhost:3000', 'https://ruangbahasa-be.vercel.app'], // Allow requests from these origins
-    methods: 'GET,POST,PUT,DELETE',
-    allowedHeaders: 'Content-Type,Authorization',
-    optionsSuccessStatus: 200
+  origin: ["http://127.0.0.1:5500", "http://localhost:3000", "https://ruangbahasa-be.vercel.app"], // Allow requests from these origins
+  methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: "Content-Type,Authorization",
+  optionsSuccessStatus: 200,
 };
-
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
-
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome to Ruang Bahasa application." });
+  res.json({ message: "Welcome to Ruang Bahasa application." });
 });
 
 // Check database connection
@@ -92,7 +75,6 @@ app.get("/", (req, res) => {
   }
 })();
 
-
 // Utility function for querying the database with promises
 const queryDb = async (query, params) => {
   try {
@@ -103,13 +85,12 @@ const queryDb = async (query, params) => {
     const [rows] = await pool.execute(query, params);
     return rows;
   } catch (error) {
-    console.error('Database query error:', error);
+    console.error("Database query error:", error);
     throw error;
   }
 };
 
-
-  export default queryDb;
+export default queryDb;
 
 // Rute API
 app.use("/signup", signup);
@@ -119,14 +100,7 @@ app.use("/change-password", changepass); // Rute untuk signup
 app.use("/quiz-progress", quizprogress); // Rute untuk login
 app.use("/reset-quiz", resetquiz);
 
-
 // Start the server
 app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+  console.log("Server is running on port 3000");
 });
-
-
-
-
-
-
