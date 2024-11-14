@@ -34,7 +34,7 @@ const app = express();
 
 // Middleware setup
 const corsOptions = {
-  origin: ["http://127.0.0.1:5500", "http://localhost:3000", "https://ruangbahasa-be.vercel.app"], // Allowed origins
+  origin: ["https://clement-website-ruangbahasa123.vercel.app"], // Allowed origins
   methods: "GET,POST,PUT,DELETE",
   allowedHeaders: "Content-Type,Authorization",
   optionsSuccessStatus: 200,
