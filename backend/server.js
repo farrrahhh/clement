@@ -59,7 +59,7 @@ app.get("/", (req, res) => {
 })();
 
 const queryDb = (query, params) => {
-  return db.promise().query(query, params);
+  return pool.promise().query(query, params);
 };
 export default queryDb;
 
