@@ -12,6 +12,7 @@ import quizprogress from "./api/quizprogress.js";
 import resetquiz from "./api/resetquiz.js";
 import saveprogress from "./api/saveprogress.js";
 import signup from "./api/signup.js";
+import bcrypt from "bcryptjs";
 
 // Check database connection
 
