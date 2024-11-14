@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="frontend/style.css">
+    <title>RuangBahasa</title>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">RuangBahasa!</a>
+        <div class="hamburger" onclick="toggleNav()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <div class="hamburger" onclick="toggleNav()">
+                <i class="fas fa-times"></i>
+            </div>
+            <a href="#" class="active">Home</a>
+            <a href="frontend/ruangbahasa.html">Tentang</a>
+            <a href="frontend/about.html">Developer</a>
+            <a href="frontend/login.html" id="login-link">Login</a>
+            <a href="frontend/profile.html" id="profile-icon" style="display: none;">
+                <i class="fas fa-user"></i>
+            </a>
+        </nav>
+    </header>
+    <section class="home">
+        <div class="home-img">
+            <img id="drag1" src="frontend/maskot.png" draggable="true" ondragstart="drag(event)" width="336" height="69">
+            <br>
+        </div>
+        <div class="home-content1">
+            <h1>Selamat datang di <span class="title">RuangBahasa!</span></h1>
+            <h3 class="typing-text1">Website Pembelajaran bahasa Indonesia paling <span class="typed-text1"></span></h3><br>
+            <p>Apakah kalian siap ber-bahasa bersama?</p>
+            <a href="frontend/login.html" class="btn1" id="ready-button">Sudah siap?</a>
+        </div>
+    </section>
+    
+    <script src="frontend/hamburger.js"></script>
+    <script src="frontend/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const readyButton = document.getElementById('ready-button');
+            const username = localStorage.getItem('username');
+
+            if (username) {
+                // User is logged in, update the link to point to page2.html
+                readyButton.href = 'frontend/page2.html';
+            } else {
+                // User is not logged in, keep the link pointing to login.html
+                readyButton.href = 'frontend/login.html';
+            }
+        });
+    </script>
+</body>
+</html>
