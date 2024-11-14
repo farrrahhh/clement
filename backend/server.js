@@ -16,8 +16,8 @@ import login from "./api/login.js";
 // Load environment variables
 dotenv.config();
 
-// Create a MySQL pool connection
-const pool = mysql.createPool({
+// server.js
+export const pool = mysql.createPool({
   host: process.env.MYSQLHOST,
   port: process.env.MYSQLPORT,
   user: process.env.MYSQLUSER,
@@ -59,15 +59,18 @@ app.get("/", (req, res) => {
   }
 })();
 
+// Mengembalikan hasil query yang benar
 const queryDb = async (query, params) => {
-  const connection = await pool.getConnection();
   try {
-    const [rows, fields] = await connection.query(query, params);
-    return rows;
-  } finally {
-    connection.release(); // Make sure to release the connection
+    const [rows] = await pool.query(query, params);
+    return rows; // Mengembalikan data hasil query
+  } catch (error) {
+    console.error("Error in queryDb:", error);
+    throw error;
   }
 };
+
+export { queryDb };
 
 // API Routes
 app.use("/signup", signup);

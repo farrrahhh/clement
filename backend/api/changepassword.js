@@ -1,16 +1,13 @@
 import express from "express";
 import bcrypt from "bcryptjs";
-import db from "../server.js";
+import { pool } from "../server.js"; // Import pool from server.js
 const router = express.Router();
 
 router.post("/", async (req, res) => {
   const { username, currentPassword, newPassword } = req.body;
 
-  const query = "SELECT password FROM users WHERE username = ?";
-  db.query(query, [username], async (err, results) => {
-    if (err) {
-      return res.status(500).send({ message: "Error fetching user data" });
-    }
+  try {
+    const [results] = await pool.query("SELECT password FROM users WHERE username = ?", [username]);
 
     if (results.length === 0) {
       return res.status(404).send({ message: "User not found" });
@@ -24,14 +21,13 @@ router.post("/", async (req, res) => {
     }
 
     const hashedNewPassword = await bcrypt.hash(newPassword, 10);
-    const updateQuery = "UPDATE users SET password = ? WHERE username = ?";
-    db.query(updateQuery, [hashedNewPassword, username], (err, result) => {
-      if (err) {
-        return res.status(500).send({ message: "Error updating password" });
-      }
-      res.send({ message: "Password changed successfully" });
-    });
-  });
+    await pool.query("UPDATE users SET password = ? WHERE username = ?", [hashedNewPassword, username]);
+
+    res.send({ message: "Password changed successfully" });
+  } catch (err) {
+    console.error("Error updating password:", err);
+    res.status(500).send({ message: "Error updating password" });
+  }
 });
 
 export default router;
