@@ -58,28 +58,8 @@ app.get("/", (req, res) => {
   }
 })();
 
-const queryDb = async (query, params) => {
-  try {
-    // Check if query is a valid string
-    if (typeof query !== "string" || query.trim() === "") {
-      console.error("Invalid query string:", query); // Log invalid query
-      throw new Error("Query must be a non-empty string.");
-    }
-
-    // Ensure params is an array
-    if (!Array.isArray(params)) {
-      params = [params];
-    }
-
-    console.log("Executing query:", query); // Log query
-    console.log("With parameters:", params); // Log parameters
-
-    const [rows] = await pool.execute(query, params);
-    return rows;
-  } catch (error) {
-    console.error("Database query error:", error);
-    throw error; // Re-throw the error for further handling
-  }
+const queryDb = (query, params) => {
+  return db.promise().query(query, params);
 };
 export default queryDb;
 
