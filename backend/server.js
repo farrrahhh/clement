@@ -2,7 +2,6 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import bcrypt from "bcrypt";
 import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
 
