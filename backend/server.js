@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
+import mysql2 from "mysql2";
 
 // Configure environment variables
 dotenv.config();
