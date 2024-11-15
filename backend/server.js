@@ -2,67 +2,65 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import bcrypt from "bcrypt";
+import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
-import mysql from "mysql2/promise";
 
-// Import API routes
-import changepass from "./api/changepassword.js";
-import quizprogress from "./api/quizprogress.js";
-import resetquiz from "./api/resetquiz.js";
-import saveprogress from "./api/saveprogress.js";
-import signup from "./api/signup.js";
-import login from "./api/login.js";
-
-// Load environment variables
+// Configure environment variables
 dotenv.config();
 
-// Initialize Express application
-const app = express();
-
-// Middleware to enable CORS and parse JSON requests
-app.use(cors());
-app.use(bodyParser.json());
-
-// Root route for a simple message
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to the Ruang Bahasa application." });
+// Set up Sequelize with environment variables
+const db = new Sequelize(process.env.MYSQLDATABASE, process.env.MYSQLUSER, process.env.MYSQLPASSWORD, {
+  host: process.env.MYSQLHOST,
+  port: process.env.MYSQLPORT,
+  dialect: "mysql",
+  logging: false,
 });
 
-// Function to handle database queries
-const queryDb = async (query, params) => {
-  let connection;
+// Test the database connection
+(async () => {
   try {
-    // Establish a new database connection
-    connection = await mysql.createConnection({
-      host: process.env.MYSQLHOST,
-      port: process.env.MYSQLPORT,
-      user: process.env.MYSQLUSER,
-      password: process.env.MYSQLPASSWORD,
-      database: process.env.MYSQLDATABASE,
-    });
-
-    // Execute the query with parameters
-    const [rows] = await connection.execute(query, params);
-    return rows;
+    await db.authenticate();
+    console.log("Database Connected...");
   } catch (error) {
-    console.error("Error in queryDb:", error);
+    console.error("Unable to connect to the database:", error);
+  }
+})();
+
+const app = express();
+
+// Configure CORS options
+const corsOptions = {
+  origin: ["http://127.0.0.1:5500", "http://localhost:3000", "https://ruangbahasa-be.vercel.app"],
+  methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: "Content-Type,Authorization",
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+app.use(bodyParser.json());
+
+// Utility function for querying the database
+const queryDb = async (query, params) => {
+  try {
+    const [results, metadata] = await db.query(query, { replacements: params });
+    return results;
+  } catch (error) {
+    console.error("Database query error:", error);
     throw error;
-  } finally {
-    // Ensure the connection is closed after the query
-    if (connection) await connection.end();
   }
 };
 
-// Export the query function for use in route files
+// Routes
+// Example route to test the connection
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to Ruang Bahasa application." });
+});
+
+// Other routes here (e.g., /login, /signup)
+
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
+
 export { queryDb };
-
-// API routes
-app.use("/signup", signup); // Route for user signup
-app.use("/login", login); // Route for user login
-app.use("/save-progress", saveprogress); // Route for saving progress
-app.use("/change-password", changepass); // Route for changing password
-app.use("/quiz-progress", quizprogress); // Route for quiz progress
-app.use("/reset-quiz", resetquiz); // Route for resetting quiz
-
-// Export the app for deployment (e.g., Vercel)
-export default app;

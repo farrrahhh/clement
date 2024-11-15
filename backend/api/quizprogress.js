@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
     const userResults = await queryDb(getUserQuery, [username]);
 
     if (userResults.length === 0) {
-      return res.status(404).send({ message: "User not found" });
+      return res.status(404).json({ message: "User not found" });
     }
 
     const user_id = userResults[0].user_id;
@@ -23,13 +23,13 @@ router.get("/", async (req, res) => {
     const progressResults = await queryDb(getProgressQuery, [user_id, quiz_id]);
 
     if (progressResults.length === 0) {
-      return res.send({ status: "not_started" });
+      return res.json({ status: "not_started" });
     }
 
-    res.send(progressResults[0]);
+    res.json(progressResults[0]);
   } catch (err) {
     console.error("Error fetching quiz progress:", err);
-    res.status(500).send({ message: "Error fetching quiz progress" });
+    res.status(500).json({ message: "Error fetching quiz progress" });
   }
 });
 
@@ -41,23 +41,23 @@ router.post("/", async (req, res) => {
     const results = await queryDb("SELECT password FROM users WHERE username = ?", [username]);
 
     if (results.length === 0) {
-      return res.status(404).send({ message: "User not found" });
+      return res.status(404).json({ message: "User not found" });
     }
 
     const user = results[0];
     const passwordMatch = await bcrypt.compare(currentPassword, user.password);
 
     if (!passwordMatch) {
-      return res.status(401).send({ message: "Current password is incorrect" });
+      return res.status(401).json({ message: "Current password is incorrect" });
     }
 
     const hashedNewPassword = await bcrypt.hash(newPassword, 10);
     await queryDb("UPDATE users SET password = ? WHERE username = ?", [hashedNewPassword, username]);
 
-    res.send({ message: "Password changed successfully" });
+    res.json({ message: "Password changed successfully" });
   } catch (err) {
     console.error("Error updating password:", err);
-    res.status(500).send({ message: "Error updating password" });
+    res.status(500).json({ message: "Error updating password" });
   }
 });
 
