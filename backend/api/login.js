@@ -1,7 +1,7 @@
-//backend/api/auth/login.js
+// backend/api/auth/login.js
 import express from "express";
 import bcrypt from "bcryptjs";
-import queryDb from "../server.js";
+import { queryDb } from "../server.js"; // pastikan impor queryDb benar sesuai ekspor
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ router.post("/", async (req, res) => {
 
   try {
     // Check if the user exists
-    const [users] = await queryDb("SELECT * FROM users WHERE username = ?", [username]);
+    const users = await queryDb("SELECT * FROM users WHERE username = ?", [username]);
 
     if (users.length === 0) {
       return res.status(401).json({ message: "Invalid credentials" });

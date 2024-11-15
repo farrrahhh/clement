@@ -13,61 +13,50 @@ import saveprogress from "./api/saveprogress.js";
 import signup from "./api/signup.js";
 import login from "./api/login.js";
 
-// Load environment variables from .env file
+// Load environment variables
 dotenv.config();
-
-// MySQL Database Connection Pool
-export const pool = mysql.createPool({
-  host: process.env.MYSQLHOST,
-  port: process.env.MYSQLPORT,
-  user: process.env.MYSQLUSER,
-  password: process.env.MYSQLPASSWORD,
-  database: process.env.MYSQLDATABASE,
-  waitForConnections: true,
-  connectionLimit: 15,
-  queueLimit: 0,
-  connectTimeout: 20000,
-});
 
 // Initialize Express application
 const app = express();
 
-// Middleware to enable CORS and parse incoming JSON requests
+// Middleware to enable CORS and parse JSON requests
 app.use(cors());
 app.use(bodyParser.json());
 
-// Simple root route
+// Root route for a simple message
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to Ruang Bahasa application." });
+  res.json({ message: "Welcome to the Ruang Bahasa application." });
 });
 
-// Check MySQL connection on server start and log any connection errors
-(async () => {
-  try {
-    const connection = await pool.getConnection();
-    await connection.ping(); // Ping the database to check connectivity
-    console.log("Database Connected...");
-    connection.release(); // Release connection back to pool
-  } catch (error) {
-    console.error("Unable to connect to the database:", error);
-    // Optionally, send an email/alert for critical database issues
-  }
-})();
-
-// Function to execute database queries
+// Function to handle database queries
 const queryDb = async (query, params) => {
+  let connection;
   try {
-    const [rows] = await pool.query(query, params); // Perform query and get results
-    return rows; // Return results from query
+    // Establish a new database connection
+    connection = await mysql.createConnection({
+      host: process.env.MYSQLHOST,
+      port: process.env.MYSQLPORT,
+      user: process.env.MYSQLUSER,
+      password: process.env.MYSQLPASSWORD,
+      database: process.env.MYSQLDATABASE,
+    });
+
+    // Execute the query with parameters
+    const [rows] = await connection.execute(query, params);
+    return rows;
   } catch (error) {
-    console.error("Error in queryDb:", error); // Log query errors
-    throw error; // Rethrow error for handling upstream
+    console.error("Error in queryDb:", error);
+    throw error;
+  } finally {
+    // Ensure the connection is closed after the query
+    if (connection) await connection.end();
   }
 };
 
+// Export the query function for use in route files
 export { queryDb };
 
-// API Routes
+// API routes
 app.use("/signup", signup); // Route for user signup
 app.use("/login", login); // Route for user login
 app.use("/save-progress", saveprogress); // Route for saving progress
@@ -75,5 +64,5 @@ app.use("/change-password", changepass); // Route for changing password
 app.use("/quiz-progress", quizprogress); // Route for quiz progress
 app.use("/reset-quiz", resetquiz); // Route for resetting quiz
 
-// Export the Express app for deployment (e.g., Vercel)
+// Export the app for deployment (e.g., Vercel)
 export default app;
