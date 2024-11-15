@@ -5,7 +5,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
   const password = document.getElementById("password").value;
 
   try {
-    const response = await fetch("loca/login", {
+    const response = await fetch("https://clement-website-ruangbahasa123.vercel.app/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

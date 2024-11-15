@@ -28,14 +28,8 @@ const db = new Sequelize(process.env.MYSQLDATABASE, process.env.MYSQLUSER, proce
 })();
 
 const app = express();
-
-// Configure CORS options
-const corsOptions = {
-  origin: ["http://127.0.0.1:5500", "http://localhost:3000", "https://ruangbahasa-be.vercel.app"],
-  methods: "GET,POST,PUT,DELETE",
-  allowedHeaders: "Content-Type,Authorization",
-  optionsSuccessStatus: 200,
-};
+// Middleware
+app.use(cors());
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
